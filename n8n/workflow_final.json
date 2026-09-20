@@ -1,0 +1,100 @@
+{
+  "name": "Affiliate Lead Magnet + Email Sequence",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "optin",
+        "method": "POST"
+      },
+      "id": "webhook-optin",
+      "name": "Webhook: Opt-in",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "optin"
+    },
+    {
+      "parameters": {
+        "fromEmail": "meindoggo@gmail.com",
+        "toEmail": "meindoggo@gmail.com",
+        "subject": "🎁 Your Free Guide: Top 10 Luxury Knitwear Under $300",
+        "text": "Hi there,\n\nThanks for signing up! Here's your free guide:\n\n📥 **Top 10 Luxury Knitwear Under $300**\n\n{{$json[\"lead_magnet_url\"]}}\n\nThis curated list features premium cashmere, merino, and wool blends from brands like John Smedley, Loro Piana, and Alanui — all under $300.\n\nEnjoy!\n\n— Uday\n@t.me/hermeeagent05bot",
+        "options": {}
+      },
+      "id": "send-lead-magnet",
+      "name": "Send Lead Magnet",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [500, 200],
+      "credentials": { "smtp": "SMTP Gmail" }
+    },
+    {
+      "parameters": { "amount": 1, "unit": "days" },
+      "id": "wait-1", "name": "Wait 1 Day", "type": "n8n-nodes-base.wait", "typeVersion": 1, "position": [500, 400]
+    },
+    {
+      "parameters": {
+        "fromEmail": "meindoggo@gmail.com",
+        "toEmail": "meindoggo@gmail.com",
+        "subject": "Day 2: How to Spot Quality Cashmere",
+        "text": "Hi,\n\nYesterday you got the Top 10 list. Today: how to actually evaluate quality.\n\n**3 Quick Tests:**\n1. **Stretch test** — Good cashmere snaps back instantly\n2. **Pilling check** — Rub gently; quality fibers resist pilling\n3. **Weight feel** — Heavier = more fiber = warmer & longer-lasting\n\n**My pick today:** John Smedley 24-gauge merino polo — $180\n{{$json[\"rboutique_link\"]}}\n\nTomorrow: The one brand that beats Loro Piana on value.\n\n— Uday\n@t.me/hermeeagent05bot",
+        "options": {}
+      },
+      "id": "email-day2", "name": "Email Day 2", "type": "n8n-nodes-base.emailSend", "typeVersion": 1, "position": [750, 300], "credentials": { "smtp": "SMTP Gmail" }
+    },
+    {
+      "parameters": { "amount": 1, "unit": "days" },
+      "id": "wait-2", "name": "Wait 1 Day", "type": "n8n-nodes-base.wait", "typeVersion": 1, "position": [750, 500]
+    },
+    {
+      "parameters": {
+        "fromEmail": "meindoggo@gmail.com",
+        "toEmail": "meindoggo@gmail.com",
+        "subject": "Day 3: The \"Secret\" Brand Beating Loro Piana on Value",
+        "text": "Hi,\n\nMost people don't know **Incotex** — but they should.\n\nSame Italian mills as Loro Piana, half the price.\n\n**Today's highlight:** Incotex wool trousers with split waistband — $295\n{{$json[\"rboutique_link\"]}}\n\nPair with a John Smedley polo = complete luxury look under $500.\n\nTomorrow: Why merino beats cotton for travel.\n\n— Uday\n@t.me/hermeeagent05bot",
+        "options": {}
+      },
+      "id": "email-day3", "name": "Email Day 3", "type": "n8n-nodes-base.emailSend", "typeVersion": 1, "position": [1000, 300], "credentials": { "smtp": "SMTP Gmail" }
+    },
+    {
+      "parameters": { "amount": 1, "unit": "days" },
+      "id": "wait-3", "name": "Wait 1 Day", "type": "n8n-nodes-base.wait", "typeVersion": 1, "position": [1000, 500]
+    },
+    {
+      "parameters": {
+        "fromEmail": "meindoggo@gmail.com",
+        "toEmail": "meindoggo@gmail.com",
+        "subject": "Day 4: Merino vs Cotton — The Travel Test",
+        "text": "Hi,\n\nPacked a cotton tee and a merino tee for a week trip.\n\n**Result:** Merino wore 5x, zero odor. Cotton wore once, smelled.\n\n**Why:** Merino's natural antimicrobial properties.\n\n**Travel essential:** Merino base layer — $95\n{{$json[\"amazon_link\"]}}\n\nTomorrow: The only 3 pieces you need for a capsule wardrobe.\n\n— Uday\n@t.me/hermeeagent05bot",
+        "options": {}
+      },
+      "id": "email-day4", "name": "Email Day 4", "type": "n8n-nodes-base.emailSend", "typeVersion": 1, "position": [1250, 300], "credentials": { "smtp": "SMTP Gmail" }
+    },
+    {
+      "parameters": { "amount": 1, "unit": "days" },
+      "id": "wait-4", "name": "Wait 1 Day", "type": "n8n-nodes-base.wait", "typeVersion": 1, "position": [1250, 500]
+    },
+    {
+      "parameters": {
+        "fromEmail": "meindoggo@gmail.com",
+        "toEmail": "meindoggo@gmail.com",
+        "subject": "Day 5: The 3-Piece Capsule Wardrobe (Luxury Edition)",
+        "text": "Hi,\n\nAll you need:\n\n1. **Navy merino polo** (John Smedley) — dress up or down\n2. **Charcoal wool trousers** (Incotex) — office to dinner\n3. **Cashmere beanie** (Eric Javits) — instant polish\n\nTotal: ~$600. Replaces 20 cheap items.\n\n**Shop the capsule:**\n• Polo: {{$json[\"rboutique_link_1\"]}}\n• Trousers: {{$json[\"rboutique_link_2\"]}}\n• Beanie: {{$json[\"rboutique_link_3\"]}}\n\nThat's the 5-day sequence! Stay subscribed for daily curated picks.\n\n— Uday\n@t.me/hermeeagent05bot",
+        "options": {}
+      },
+      "id": "email-day5", "name": "Email Day 5", "type": "n8n-nodes-base.emailSend", "typeVersion": 1, "position": [1500, 300], "credentials": { "smtp": "SMTP Gmail" }
+    }
+  ],
+  "connections": {
+    "Webhook: Opt-in": { "main": [[{ "node": "Send Lead Magnet", "type": "main", "index": 0 }]] },
+    "Send Lead Magnet": { "main": [[{ "node": "Wait 1 Day", "type": "main", "index": 0 }]] },
+    "Wait 1 Day": { "main": [[{ "node": "Email Day 2", "type": "main", "index": 0 }]] },
+    "Email Day 2": { "main": [[{ "node": "Wait 1 Day", "type": "main", "index": 0 }]] },
+    "Wait 1 Day_1": { "main": [[{ "node": "Email Day 3", "type": "main", "index": 0 }]] },
+    "Email Day 3": { "main": [[{ "node": "Wait 1 Day", "type": "main", "index": 0 }]] },
+    "Wait 1 Day_2": { "main": [[{ "node": "Email Day 4", "type": "main", "index": 0 }]] },
+    "Email Day 4": { "main": [[{ "node": "Wait 1 Day", "type": "main", "index": 0 }]] },
+    "Wait 1 Day_3": { "main": [[{ "node": "Email Day 5", "type": "main", "index": 0 }]] }
+  },
+  "active": false, "settings": {}, "id": "1"
+}

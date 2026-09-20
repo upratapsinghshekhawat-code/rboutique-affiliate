@@ -116,7 +116,7 @@ def build_site_html(network_key, products):
 <h2>Get the Free Guide: Top 10 Luxury Knitwear Under $300</h2>
 <div class="card" style="text-align:center;background:#1a1a2e;border-color:#d6a96a">
 <p style="font-size:1.1rem;margin-bottom:1rem">Curated list of premium cashmere, merino & wool blends from John Smedley, Loro Piana, Alanui & more — all under $300.</p>
-<form action="https://your-n8n-domain/webhook/affiliate-optin" method="POST" style="display:inline-flex;gap:.5rem;max-width:400px;margin:0 auto">
+<form action="http://localhost:5678/webhook/optin" method="POST" style="display:inline-flex;gap:.5rem;max-width:400px;margin:0 auto">
 <input type="email" name="email" placeholder="your@email.com" required style="flex:1;padding:.75rem;border-radius:6px;border:1px solid #2a2a2e;background:#0f0f12;color:#eae6df">
 <button type="submit" style="background:#d6a96a;color:#0f0f12;border:none;padding:.75rem 1.5rem;border-radius:6px;font-weight:600;cursor:pointer">Get Free Guide →</button>
 </form>
