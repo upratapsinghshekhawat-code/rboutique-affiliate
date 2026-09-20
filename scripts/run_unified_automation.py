@@ -109,6 +109,21 @@ def build_site_html(network_key, products):
     
     cards_html = "\n".join(cards)
     
+    # Add opt-in form only for rboutique
+    optin_html = ""
+    if network_key == "rboutique":
+        optin_html = '''
+<h2>Get the Free Guide: Top 10 Luxury Knitwear Under $300</h2>
+<div class="card" style="text-align:center;background:#1a1a2e;border-color:#d6a96a">
+<p style="font-size:1.1rem;margin-bottom:1rem">Curated list of premium cashmere, merino & wool blends from John Smedley, Loro Piana, Alanui & more — all under $300.</p>
+<form action="https://your-n8n-domain/webhook/affiliate-optin" method="POST" style="display:inline-flex;gap:.5rem;max-width:400px;margin:0 auto">
+<input type="email" name="email" placeholder="your@email.com" required style="flex:1;padding:.75rem;border-radius:6px;border:1px solid #2a2a2e;background:#0f0f12;color:#eae6df">
+<button type="submit" style="background:#d6a96a;color:#0f0f12;border:none;padding:.75rem 1.5rem;border-radius:6px;font-weight:600;cursor:pointer">Get Free Guide →</button>
+</form>
+<p style="font-size:.75rem;color:#777;margin-top:.5rem">No spam. Unsubscribe anytime. Daily curated picks via email.</p>
+</div>
+'''
+    
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,6 +147,8 @@ h1{{color:#d6a96a;font-size:2.2rem;margin-bottom:.5rem}} h2{{color:#d6a96a;borde
 
 {cards_html}
 
+{optin_html}
+
 <h2>How This Works</h2>
 <p>Every product link above is tracked through our affiliate partnerships. When you purchase through any of these links, we receive a commission ({commission}). There is no additional cost to you.</p>
 <p>This site grows daily with new product reviews targeting specific search queries. More content = more traffic = more commissions.</p>
@@ -152,29 +169,37 @@ h1{{color:#d6a96a;font-size:2.2rem;margin-bottom:.5rem}} h2{{color:#d6a96a;borde
 def build_telegram_message(network_key, products):
     """Generate Telegram message for a network."""
     cfg = NETWORKS[network_key]
-    commission = cfg["commission"]
     tags = cfg["tags"]
     title = cfg["title"]
     
-    msg = f"🔥 *{title} — New Deals* 🔥\n\n_Independent reviews. {commission} affiliate commission. No identity._\n\n---\n\n"
+    emojis = {
+        "rboutique": "💎",
+        "amazon": "🛍️",
+        "clickbank": "📚"
+    }
+    emoji = emojis.get(network_key, "✨")
+    
+    msg = f"{emoji} *{title} — Today's Curated Picks* {emoji}\n\n"
+    msg += f"Hand-picked for you. Tap any link to see the deal →\n\n---\n\n"
     
     for p in products:
         tracked = make_tracked_link(network_key, p)
         name = p.get("name", "Product")
         brand = p.get("brand", p.get("vendor", ""))
-        category = p.get("category", "")
-        desc = p.get("description", "")[:120]
+        desc = p.get("description", "")
+        
+        # Short, punchy 1-2 line description
+        short_desc = desc[:160].rstrip()
+        if len(desc) > 160:
+            short_desc = short_desc.rsplit('.', 1)[0] + "."
         
         msg += f"*🏷️ {name}*\n"
         if brand:
-            msg += f"{brand}\n"
-        if category:
-            msg += f"{category}\n"
-        msg += f"{commission} Commission\n\n"
-        msg += f"{desc}...\n\n"
-        msg += f"🔗 [Check Price & Availability]({tracked})\n\n---\n\n"
+            msg += f"🏷 {brand}\n"
+        msg += f"💡 {short_desc}\n\n"
+        msg += f"🔗 [View Deal →]({tracked})\n\n---\n\n"
     
-    msg += f"_{title} — curated daily. All links tracked._\n\n@t.me/hermeeagent05bot | {tags}"
+    msg += f"_{title} — fresh picks daily._\n\n@t.me/hermeeagent05bot | {tags}"
     return msg
 
 
@@ -248,19 +273,32 @@ def main():
     print(f"  Completed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
     # Save combined telegram message
-    combined = "🔥 *DAILY AFFILIATE DEALS — All Networks* 🔥\n\n_Independent reviews. No identity. Updated 09:00 UTC._\n\n---\n\n"
+    emojis = {"rboutique": "💎", "amazon": "🛍️", "clickbank": "📚"}
+    combined = "✨ *YOUR DAILY AFFILIATE PICKS — All Networks* ✨\n\n"
+    combined += "Curated deals across luxury fashion, tech & digital products. Tap to explore →\n\n---\n\n"
     for r in results:
         if r["status"] == "success":
             net = r["network"]
             cfg = NETWORKS[net]
             products = load_products(net)
             picked = pick_products(products, LINKS_PER_NETWORK)
+            emoji = emojis.get(net, "✨")
+            combined += f"{emoji} *{cfg['title']}*\n\n"
             for p in picked:
                 tracked = make_tracked_link(net, p)
-                name = p.get("name", "Product")[:40]
-                combined += f"🏷️ [{name}]({tracked}) — {cfg['commission']} ({net})\n"
-            combined += "\n---\n\n"
-    combined += "@t.me/hermeeagent05bot | #affiliate #deals #automation"
+                name = p.get("name", "Product")[:50]
+                brand = p.get("brand", p.get("vendor", ""))
+                desc = p.get("description", "")[:120].rstrip()
+                if len(p.get("description", "")) > 120:
+                    desc = desc.rsplit('.', 1)[0] + "."
+                
+                combined += f"🏷️ *{name}*\n"
+                if brand:
+                    combined += f"🏷 {brand}\n"
+                combined += f"💡 {desc}\n"
+                combined += f"🔗 [View Deal →]({tracked})\n\n"
+            combined += "---\n\n"
+    combined += "_Fresh picks every morning. You save time researching; I earn from confirmed sales._\n\n@t.me/hermeeagent05bot | #affiliate #deals #automation"
     
     combined_path = BASE / "rboutique-affiliate" / "telegram_combined.txt"
     with open(combined_path, "w", encoding="utf-8") as f:
