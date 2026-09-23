@@ -1,0 +1,130 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "v1-5-pruned-emaonly.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint (SD 1.5)"
+    }
+  },
+  "2": {
+    "inputs": {
+      "control_net_name": "control_v11p_sd15_openpose.pth"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet (OpenPose)"
+    }
+  },
+  "3": {
+    "inputs": {
+      "image": "product_image.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Product Image"
+    }
+  },
+  "4": {
+    "inputs": {
+      "width": 576,
+      "height": 1024,
+      "batch_size": 16
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent (16 frames, 576x1024)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "high quality product photography, luxury fashion, cashmere turtleneck, Piacenza brand, professional studio lighting, clean neutral background, commercial photography, 8k, sharp focus, detailed texture, elegant, premium",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "blurry, low quality, distorted, ugly, bad anatomy, watermark, text, signature, logo, username, blurry, amateur, lowres, pixelated, deformed, mutated, extra limbs, missing limbs, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, blurry, low quality",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "7": {
+    "inputs": {
+      "positive": ["5", 0],
+      "negative": ["6", 0],
+      "control_net": ["2", 0],
+      "image": ["3", 0],
+      "strength": 0.8,
+      "start_percent": 0.0,
+      "end_percent": 1.0
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (OpenPose)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "model": ["1", 0],
+      "model_name": "mm_sd_v15_v2.ckpt",
+      "beta_schedule": "autoselect"
+    },
+    "class_type": "ADE_AnimateDiffLoaderGen1",
+    "_meta": {
+      "title": "AnimateDiff Loader Gen1 (applies to model)"
+    }
+  },
+  "9": {
+    "inputs": {
+      "model": ["8", 0],
+      "positive": ["7", 0],
+      "negative": ["7", 1],
+      "vae": ["1", 2],
+      "latent_image": ["4", 0],
+      "seed": 42,
+      "steps": 20,
+      "cfg": 7.0,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler (AnimateDiff + ControlNet)"
+    }
+  },
+  "10": {
+    "inputs": {
+      "samples": ["9", 0],
+      "vae": ["1", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "11": {
+    "inputs": {
+      "images": ["10", 0],
+      "filename_prefix": "reel_rboutique_cashmere_turtleneck",
+      "fps": 8,
+      "lossless": true,
+      "quality": 90,
+      "method": "default"
+    },
+    "class_type": "SaveAnimatedWEBP",
+    "_meta": {
+      "title": "Save Animated WEBP"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Deep-link generated affiliate links for RBoutique (6% commission)
+# Generated via deep_link_generator.py
+
+# 1. Designer Silk Scarf
+https://click.linksynergy.com/link?id=Br7kCmfVLtE&offerid=1539873.528809996565778384071734&type=2&murl=https%3A%2F%2Fwww.rboutique.com%2Fen-us%2Fproducts%2Fdesigner-silk-scarf
+
+# 2. Sculptural Leather Mini Bag
+https://click.linksynergy.com/link?id=Br7kCmfVLtE&offerid=1539873.528809996565778384071734&type=2&murl=https%3A%2F%2Fwww.rboutique.com%2Fen-us%2Fproducts%2Fsculptural-leather-mini-bag
+
+# 3. Statement Oversized Sunglasses
+https://click.linksynergy.com/link?id=Br7kCmfVLtE&offerid=1539873.528809996565778384071734&type=2&murl=https%3A%2F%2Fwww.rboutique.com%2Fen-us%2Fproducts%2Fstatement-oversized-sunglasses

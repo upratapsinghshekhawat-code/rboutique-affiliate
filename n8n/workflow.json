@@ -1,0 +1,1 @@
+{"name":"rboutique-auto-flow","schedule":"0 */6 * * *","steps":["fetch_products","generate_links","write_reviews","update_site","push_telegram","log_raktun"],"note":"Kong API broken — manual deep-link replication used. Source: user-provided tracked links (MID 52880, offer 1539873)"}

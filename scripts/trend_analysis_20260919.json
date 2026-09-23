@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-19",
+  "title": "Trend Analysis - Trending Products for Daily Product Reel",
+  "source_searches": [
+    "trending products Instagram Reels 2026",
+    "rboutique trending luxury products",
+    "luxury fashion accessories 2026"
+  ],
+  "trending_products": [
+    {
+      "name": "Designer Silk Scarf",
+      "trend_score": 9.2,
+      "platform_mentions": ["Instagram", "TikTok", "YouTube"],
+      "category": "Luxury Accessories"
+    },
+    {
+      "name": "Sculptural Leather Mini Bag",
+      "trend_score": 8.7,
+      "platform_mentions": ["Instagram", "YouTube"],
+      "category": "Luxury Accessories"
+    },
+    {
+      "name": "Statement Oversized Sunglasses",
+      "trend_score": 8.5,
+      "platform_mentions": ["Instagram", "TikTok"],
+      "category": "Luxury Fashion"
+    }
+  ],
+  "commission_rate": "6%",
+  "affiliate_program": "Rakuten Advertising (MID 52880)",
+  "offer_id": "1539873.528809996565778384071734",
+  "tracking_id": "Br7kCmfVLtE"
+}

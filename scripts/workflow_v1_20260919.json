@@ -1,0 +1,100 @@
+{
+  "workflow_version": "20260919_v1",
+  "description": "ComfyUI API-format workflow for product reel image generation",
+  "format": "9:16_vertical",
+  "resolution": [1080, 1920],
+  "model": "sd_xl_base_1.0.safetensors",
+  "scheduler": "normal",
+  "steps": 20,
+  "cfg": 7.5,
+  "seed": -1,
+  "negative_prompt": "ugly, blurry, low quality, deformed, watermark, text, bad anatomy, extra fingers, mutated, cartoon, illustration",
+  "nodes": {
+    "1": {
+      "class_type": "CheckpointLoaderSimple",
+      "inputs": {
+        "ckpt_name": "sd_xl_base_1.0.safetensors"
+      }
+    },
+    "2": {
+      "class_type": "CLIPLoader",
+      "inputs": {
+        "clip_name": "clip_l.safetensors"
+      }
+    },
+    "3": {
+      "class_type": "VAELoader",
+      "inputs": {
+        "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors"
+      }
+    },
+    "4": {
+      "class_type": "EmptyLatentImage",
+      "inputs": {
+        "width": 1080,
+        "height": 1920,
+        "batch_size": 1
+      }
+    },
+    "5": {
+      "class_type": "CLIPTextEncode",
+      "inputs": {
+        "text": "PRODUCT-SPECIFIC PROMPT",
+        "clip": ["2", 0]
+      }
+    },
+    "6": {
+      "class_type": "CLIPTextEncode",
+      "inputs": {
+        "text": "ugly, blurry, low quality, deformed, watermark, text, bad anatomy, extra fingers, mutated, cartoon, illustration",
+        "clip": ["2", 0]
+      }
+    },
+    "7": {
+      "class_type": "KSampler",
+      "inputs": {
+        "seed": -1,
+        "steps": 20,
+        "cfg": 7.5,
+        "sampler_name": "euler",
+        "scheduler": "normal",
+        "denoise": 1.0,
+        "model": ["1", 0],
+        "positive": ["5", 0],
+        "negative": ["6", 0],
+        "latent_image": ["4", 0]
+      }
+    },
+    "8": {
+      "class_type": "VAEDecode",
+      "inputs": {
+        "samples": ["7", 0],
+        "vae": ["3", 0]
+      }
+    },
+    "9": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "filename_prefix": "product_{name}_20260919",
+        "images": ["8", 0]
+      }
+    }
+  },
+  "product_configs": [
+    {
+      "product": "Designer Silk Scarf",
+      "node_5_text": "Elegant silk scarf draped on marble surface, soft natural lighting, 9:16 vertical, photorealistic, luxury fashion product photography, studio lighting, rich fabric texture, sophisticated aesthetic, warm tones",
+      "output_filename": "silk_scarf_20260919.png"
+    },
+    {
+      "product": "Sculptural Leather Mini Bag",
+      "node_5_text": "Sculptural leather mini bag on marble pedestal, dramatic studio lighting, 9:16 vertical, photorealistic, luxury fashion product photography, high detail, modern design, professional photography, clean background",
+      "output_filename": "leather_mini_bag_20260919.png"
+    },
+    {
+      "product": "Statement Oversized Sunglasses",
+      "node_5_text": "Statement oversized sunglasses on model face, bold frame close-up, studio lighting, 9:16 vertical, photorealistic, luxury fashion product photography, high detail, modern design, professional photography, clean background",
+      "output_filename": "oversized_sunglasses_20260919.png"
+    }
+  ]
+}
