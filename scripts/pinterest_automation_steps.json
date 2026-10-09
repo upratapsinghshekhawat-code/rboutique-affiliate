@@ -1,0 +1,152 @@
+[
+  {
+    "account": "luxe",
+    "serial": 1,
+    "session": "pinterest_luxe",
+    "vault_handle": "pinterest_luxe_login",
+    "steps": [
+      {
+        "action": "goto",
+        "url": "https://www.pinterest.com/"
+      },
+      {
+        "action": "wait"
+      },
+      {
+        "action": "vault_fill",
+        "handle": "pinterest_luxe_login"
+      },
+      {
+        "action": "goto",
+        "url": "https://www.pinterest.com/pin-builder/"
+      },
+      {
+        "action": "wait"
+      },
+      {
+        "action": "upload_media",
+        "media_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\rboutique-affiliate\\content\\queue\\pinterest_pins\\serial_1\\video.mp4",
+        "media_type": "video/mp4"
+      },
+      {
+        "action": "fill_title",
+        "title": "3 Pack T-shirt con logo ricamato - Rboutique | $99"
+      },
+      {
+        "action": "fill_description",
+        "description": "Same tops, 40% less. The secret editors keep. \ud83e\udd2b\n\n\ud83c\udff7\ufe0f 3 Pack T-shirt con logo ricamato\n\ud83c\udff7 Rboutique\n\ud83d\udce6 Tops\n\ud83d\udcb0 $99 (retail ~$265)\n\n\u2728 Worn by insiders \u2014 the quiet luxury signal\n\n\u2b50 5319+ reviews \u2022 4.8\u2605 avg\n\ud83c\udfc6 Bestseller in tops\n\ud83d\udce6 Free shipping \u2022 Easy returns\n\n\u26a1 Early access for followers \u2014 link in bio \ud83d\udd10\n\nClaim yours: bio link #1 (expires soon) \u23f3\n\n#costperwear #investmentpieces #luxuryfashion #capsulewardr... Link #1 in bio"
+      },
+      {
+        "action": "select_board",
+        "board_name": "designer-for-less"
+      },
+      {
+        "action": "fill_link",
+        "link": "https://click.linksynergy.com/link?id=Br7kCmfVLtE&offerid=1539873.528809996565778384071734&type=2&murl=https%3A//www.rboutique.com/products/3-pack-t-shirt-con-logo-ricamato-ralph-lauren-23638"
+      },
+      {
+        "action": "publish"
+      }
+    ]
+  },
+  {
+    "account": "luxe",
+    "serial": 2,
+    "session": "pinterest_luxe",
+    "vault_handle": "pinterest_luxe_login",
+    "steps": [
+      {
+        "action": "goto",
+        "url": "https://www.pinterest.com/"
+      },
+      {
+        "action": "wait"
+      },
+      {
+        "action": "vault_fill",
+        "handle": "pinterest_luxe_login"
+      },
+      {
+        "action": "goto",
+        "url": "https://www.pinterest.com/pin-builder/"
+      },
+      {
+        "action": "wait"
+      },
+      {
+        "action": "upload_media",
+        "media_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\rboutique-affiliate\\content\\queue\\pinterest_pins\\serial_2\\video.mp4",
+        "media_type": "video/mp4"
+      },
+      {
+        "action": "fill_title",
+        "title": "2-pack shorts in cotone biologico - KIDS - KIDS | $99"
+      },
+      {
+        "action": "fill_description",
+        "description": "Same bottoms, 40% less. The secret editors keep. \ud83e\udd2b\n\n\ud83c\udff7\ufe0f 2-pack shorts in cotone biologico - KIDS\n\ud83c\udff7 KIDS\n\ud83d\udce6 Bottoms\n\ud83d\udcb0 $99 (retail ~$248)\n\n\u2728 Handcrafted in France \u2014 double-faced that lasts decades\n\n\u2b50 5736+ reviews \u2022 4.8\u2605 avg\n\ud83c\udfc6 Bestseller in bottoms\n\ud83d\udce6 Free shipping \u2022 Easy returns\n\n\u26a1 Price expires 48h \u23f0\n\nClaim yours: bio link #2 (expires soon) \u23f3\n\n#investmentpieces #quietluxury #luxuryfashion #timelessfa... Link #2 in bio"
+      },
+      {
+        "action": "select_board",
+        "board_name": "style-guide"
+      },
+      {
+        "action": "fill_link",
+        "link": "https://click.linksynergy.com/link?id=Br7kCmfVLtE&offerid=1539873.528809996565778384071734&type=2&murl=https%3A//www.rboutique.com/products/2-pack-shorts-in-cotone-biologico-konges-slojd-36413"
+      },
+      {
+        "action": "publish"
+      }
+    ]
+  },
+  {
+    "account": "luxe",
+    "serial": 3,
+    "session": "pinterest_luxe",
+    "vault_handle": "pinterest_luxe_login",
+    "steps": [
+      {
+        "action": "goto",
+        "url": "https://www.pinterest.com/"
+      },
+      {
+        "action": "wait"
+      },
+      {
+        "action": "vault_fill",
+        "handle": "pinterest_luxe_login"
+      },
+      {
+        "action": "goto",
+        "url": "https://www.pinterest.com/pin-builder/"
+      },
+      {
+        "action": "wait"
+      },
+      {
+        "action": "upload_media",
+        "media_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\rboutique-affiliate\\content\\queue\\pinterest_pins\\serial_3\\video.mp4",
+        "media_type": "video/mp4"
+      },
+      {
+        "action": "fill_title",
+        "title": "3 pack t-shirts in cotone con stampa logo - Rboutique | $99"
+      },
+      {
+        "action": "fill_description",
+        "description": "Before: Paying retail for Rboutique. After: $99 delivered. Bridge: This link. \ud83c\udf09\n\n\ud83c\udff7\ufe0f 3 pack t-shirts in cotone con stampa logo\n\ud83c\udff7 Rboutique\n\ud83d\udce6 Tops\n\ud83d\udcb0 $99 (retail ~$335)\n\n\u2728 Handcrafted in Italy \u2014 seamless knit that lasts decades\n\n\u2b50 9650+ reviews \u2022 4.8\u2605 avg\n\ud83c\udfc6 Bestseller in tops\n\ud83d\udce6 Free shipping \u2022 Easy returns\n\n\u26a1 Only 5 left at this price \ud83d\udce6\n\nYour tops upgrade: Link #3 in bio \u2192 @luxe_fashion_finds\n\n#inves... Link #3 in bio"
+      },
+      {
+        "action": "select_board",
+        "board_name": "weekly-edit"
+      },
+      {
+        "action": "fill_link",
+        "link": "https://click.linksynergy.com/link?id=Br7kCmfVLtE&offerid=1539873.528809996565778384071734&type=2&murl=https%3A//www.rboutique.com/products/3-pack-t-shirts-in-cotone-con-stampa-logo-mm6-30419"
+      },
+      {
+        "action": "publish"
+      }
+    ]
+  }
+]
