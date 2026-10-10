@@ -295,7 +295,7 @@ def main():
             "serial_range": f"#{serial - len(all_feed) + 1} - #{serial}",
             "products": all_feed
         }, f, indent=2, ensure_ascii=False)
-    print(f"  ✓ Saved traffic feed: {feed_path} ({len(all_feed)} products)")
+    print(f"  [OK] Saved traffic feed: {feed_path} ({len(all_feed)} products)")
 
     # Summary
     print("\n" + "=" * 60)
