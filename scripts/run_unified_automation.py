@@ -225,12 +225,12 @@ def update_network(network_key):
         return {"network": network_key, "status": "no_products", "count": 0, "feed": []}
 
     picked = pick_products(products, LINKS_PER_NETWORK)
-    print(f"  ✓ Picked {len(picked)} products from {len(products)} catalog")
+    print(f"  [OK] Picked {len(picked)} products from {len(products)} catalog")
 
     for p in picked:
         p["tracked_link"] = make_tracked_link(network_key, p)
         name = p.get("name", "Product")[:50]
-        print(f"  ✓ {name}: {p['tracked_link'][:70]}...")
+        print(f"  [OK] {name}: {p['tracked_link'][:70]}...")
 
     # Update site
     html = build_site_html(network_key, picked)
@@ -238,14 +238,14 @@ def update_network(network_key):
     site_path.parent.mkdir(parents=True, exist_ok=True)
     with open(site_path, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"  ✓ Updated {site_path} ({len(html)} bytes)")
+    print(f"  [OK] Updated {site_path} ({len(html)} bytes)")
 
     # Save Telegram message
     tg_msg = build_telegram_message(network_key, picked)
     tg_path = cfg["dir"] / cfg["tg_file"]
     with open(tg_path, "w", encoding="utf-8") as f:
         f.write(tg_msg)
-    print(f"  ✓ Saved Telegram message to {tg_path} ({len(tg_msg)} bytes)")
+    print(f"  [OK] Saved Telegram message to {tg_path} ({len(tg_msg)} bytes)")
 
     return {"network": network_key, "status": "success", "count": len(picked), "products": picked}
 
@@ -279,7 +279,7 @@ def main():
                 res["feed"] = []
                 
         except Exception as e:
-            print(f"  ✗ {net} FAILED: {e}")
+            print(f"  [FAIL] {net} FAILED: {e}")
             results.append({"network": net, "status": "error", "error": str(e), "feed": []})
 
     # Save serial counter
