@@ -5,9 +5,19 @@ Posts Reels, Stories, updates profile, manages highlights.
 """
 import json
 import os
+import sys
+from pathlib import Path
+
+# Add credentials loader
+SCRIPTS_DIR = Path(r"C:\Users\HP\AppData\Local\hermes\rboutique-affiliate\scripts")
+sys.path.insert(0, str(SCRIPTS_DIR))
+from load_credentials import load_credentials
+
+# Load credentials into environment
+load_credentials()
+
 import requests
 import time
-from pathlib import Path
 from datetime import datetime
 
 BASE = Path(r"C:\Users\HP\AppData\Local\hermes")

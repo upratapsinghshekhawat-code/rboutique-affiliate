@@ -6,7 +6,16 @@ Posts Reels directly to Pages.
 """
 import json
 import os
+import sys
 from pathlib import Path
+
+# Add credentials loader
+SCRIPTS_DIR = Path(r"C:\Users\HP\AppData\Local\hermes\rboutique-affiliate\scripts")
+sys.path.insert(0, str(SCRIPTS_DIR))
+from load_credentials import load_credentials
+
+# Load credentials into environment
+load_credentials()
 
 BASE = Path(r"C:\Users\HP\AppData\Local\hermes")
 PLAN_PATH = BASE / "rboutique-affiliate" / "scripts" / "content_plan.json"

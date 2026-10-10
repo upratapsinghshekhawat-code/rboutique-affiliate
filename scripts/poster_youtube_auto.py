@@ -5,12 +5,22 @@ Uploads Shorts with thumbnails, playlists, tags, descriptions.
 """
 import json
 import os
-import pickle
+import sys
 from pathlib import Path
+
+# Add credentials loader
+SCRIPTS_DIR = Path(r"C:\Users\HP\AppData\Local\hermes\rboutique-affiliate\scripts")
+sys.path.insert(0, str(SCRIPTS_DIR))
+from load_credentials import load_credentials
+
+# Load credentials into environment
+load_credentials()
+
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
+from google.oauth2.credentials import Credentials
 
 BASE = Path(r"C:\Users\HP\AppData\Local\hermes")
 PLAN_PATH = BASE / "rboutique-affiliate" / "scripts" / "content_plan.json"
